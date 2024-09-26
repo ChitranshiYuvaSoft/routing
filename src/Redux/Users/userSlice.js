@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    userData: [],
-    user: {},
+    userData: [
+      { id: 1, name: "rahul", email: "rahul@gmail.com", city: "Indore" },
+    ],
     editUser: { user: {}, isEdit: false },
   },
   reducers: {
@@ -29,17 +30,26 @@ const userSlice = createSlice({
       };
     },
 
-    editUser: (state, action) => {
-      console.log(action.payload)
+    editUserData: (state, action) => {
       return {
         ...state,
-        editUser : {user : action.payload, isEdit : true}
-      }
-    }
+        editUser: { user: action.payload, isEdit: true },
+      };
+    },
 
+    updateUser: (state, action) => {
+      return {
+        ...state,
+        userData: state.userData.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+        editUser: { user: {}, isEdit: false },
+      };
+    },
   },
 });
 
-export const { createUser, deleteUser, editUser} = userSlice.actions;
+export const { createUser, deleteUser, editUserData, updateUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;
