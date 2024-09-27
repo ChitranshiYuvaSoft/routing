@@ -1,5 +1,6 @@
 "use client"
 import BackBtn from "@/components/BackBtn";
+import withAuth from "@/hoc/withAuth";
 import { updateUser } from "@/Redux/Users/userSlice";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -85,4 +86,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withAuth(page);

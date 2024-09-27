@@ -1,4 +1,5 @@
 "use client";
+import withAuth from "@/hoc/withAuth";
 import { deleteUser, editUser, editUserData } from "@/Redux/Users/userSlice";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -58,4 +59,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withAuth(page);

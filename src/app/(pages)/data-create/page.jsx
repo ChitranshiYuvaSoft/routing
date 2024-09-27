@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import BackBtn from "@/components/BackBtn";
 import { useRouter } from "next/navigation";
+import withAuth from "@/hoc/withAuth";
 
 const page = () => {
   const dispatch = useDispatch();
@@ -78,4 +79,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default withAuth(page);
